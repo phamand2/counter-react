@@ -4,7 +4,7 @@
 }
 body {
   background-image: url(https://wallpaperaccess.com/full/86289.jpg);
-  background-position: center;
+  background: cover;
 }
 .increment {
   background-color: chartreuse

@@ -5,6 +5,8 @@ function Button() {
 
   const [transform, setTransform] = useState(0)
 
+  const [disable, setDisable] = useState(false)
+
   const increment = () => {
     setCount(count + 1)
     setTransform(transform + 50)
@@ -12,14 +14,17 @@ function Button() {
 
   const decrement = () => {
     setCount(count - 1)
+    if(count === 1){
+      setDisable(true)
+    }
     setTransform(transform + 131)
   }
 
   const changeNumber = (event) => { 
-    if (parseInt(event.target.value) == null) {
+    if (+event.target.value == null) {
       return 
     } else {
-      setCount(parseInt(event.target.value))
+      setCount(+event.target.value)
     }}
 
 
@@ -31,7 +36,7 @@ function Button() {
         <div>
           <button className='btn btn-primary' onClick={increment}>Increment</button>
             <input style={{transform: `rotate(${transform}deg)`}} type="number" pattern="[0-9]*" value={count} onChange={changeNumber}></input> 
-          <button className='btn btn-danger' onClick={decrement}>decrement</button>
+          <button className='btn btn-danger' disabled={disable} onClick={decrement}>decrement</button>
         </div>
       </div>
     </>
